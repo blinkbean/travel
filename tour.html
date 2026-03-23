@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>线路详情 — 漫旅中国 ManTravel</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/tour.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== 导航栏 ===== -->
+  <header class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">&#9772;</span>
+        <span class="logo-text" data-i18n="logoText">漫旅中国</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html#tours" data-i18n="navTours">热门线路</a>
+        <a href="index.html#destinations" data-i18n="navDest">精选目的地</a>
+        <a href="index.html#about" data-i18n="navAbout">关于我们</a>
+        <a href="index.html#reviews" data-i18n="navReviews">旅客评价</a>
+        <a href="index.html#contact" class="btn-nav" data-i18n="navContact">定制行程</a>
+      </nav>
+      <div class="lang-dropdown" id="langSwitcher">
+        <button class="lang-current" id="langDropdownBtn" aria-haspopup="listbox" aria-expanded="false">
+          <svg class="lang-globe-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="8.5" stroke="currentColor" stroke-width="1.4"/>
+            <ellipse cx="10" cy="10" rx="3.5" ry="8.5" stroke="currentColor" stroke-width="1.4"/>
+            <line x1="1.5" y1="7" x2="18.5" y2="7" stroke="currentColor" stroke-width="1.4"/>
+            <line x1="1.5" y1="13" x2="18.5" y2="13" stroke="currentColor" stroke-width="1.4"/>
+          </svg>
+          <span id="langLabel">中文</span>
+          <svg class="lang-chevron" viewBox="0 0 12 8" fill="none">
+            <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <ul class="lang-options" id="langOptions" role="listbox">
+          <li class="lang-option active" data-lang="zh" role="option">中文</li>
+          <li class="lang-option" data-lang="en" role="option">English</li>
+          <li class="lang-option" data-lang="es" role="option">Español</li>
+        </ul>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="菜单" data-i18n-aria="navAriaMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== 加载中状态 ===== -->
+  <div class="tour-detail-loading" id="tourLoading">
+    <div class="tour-loading-hero dest-skeleton-block"></div>
+    <div class="tour-loading-body container">
+      <div class="dest-skeleton-line" style="width:50%;height:2.2rem;margin-bottom:1rem;"></div>
+      <div class="dest-skeleton-line" style="width:35%;height:1rem;margin-bottom:1.6rem;"></div>
+      <div class="dest-skeleton-line" style="width:90%;height:1rem;margin-bottom:.6rem;"></div>
+      <div class="dest-skeleton-line" style="width:85%;height:1rem;margin-bottom:.6rem;"></div>
+      <div class="dest-skeleton-line" style="width:78%;height:1rem;"></div>
+    </div>
+  </div>
+
+  <!-- ===== 错误状态 ===== -->
+  <div class="tour-detail-error" id="tourError" style="display:none;">
+    <div class="tour-detail-error-inner">
+      <p class="tour-detail-error-icon">🗺️</p>
+      <h2>线路未找到</h2>
+      <p>抱歉，您访问的线路页面不存在或已下线。</p>
+      <a href="index.html#tours" class="btn btn-primary">返回线路列表</a>
+    </div>
+  </div>
+
+  <!-- ===== 主内容（由 JS 渲染） ===== -->
+  <div id="tourContent" style="display:none;"></div>
+
+  <!-- ===== 回到顶部 ===== -->
+  <button class="back-to-top" id="backToTop" aria-label="回到顶部">&#8679;</button>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/tour.js"></script>
+</body>
+</html>
