@@ -108,7 +108,7 @@
 
   function loadTourDetail() {
     if (!tourId) { showError(); return; }
-    fetch('http://localhost:1337/api/tours/' + encodeURIComponent(tourId))
+    fetch('/api/tours/' + encodeURIComponent(tourId))
       .then(function (res) { return res.json(); })
       .then(function (json) {
         if (!json.data) { showError(); return; }

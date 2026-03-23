@@ -1378,6 +1378,29 @@ ul { list-style: none; }
     grid-template-rows: repeat(6, 180px);
   }
   .dest-large { grid-column: auto; grid-row: auto; }
+
+  .section-title { font-size: 1.6rem; }
+  .about-img-wrap { height: 300px; }
+  .about-badge-box { left: 0; }
+
+  /* photo wall: 手机改为普通流式布局 */
+  .pw-scatter {
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    padding: 0 16px 24px;
+  }
+  .pw-photo {
+    position: static !important;
+    transform: none !important;
+    width: calc(50% - 8px) !important;
+    height: 120px !important;
+  }
+  .pw-photo:hover {
+    transform: scale(1.04) !important;
+  }
 }
 
 /* ======================================

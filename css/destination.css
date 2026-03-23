@@ -333,4 +333,15 @@
 
   .dest-md-body h2 { font-size: 1.3rem; }
   .dest-md-body h3 { font-size: 1.12rem; }
+
+  .dest-detail-hero-content {
+    padding: 0 1.2rem 2.5rem;
+  }
+
+  /* 表格横向滚动，防止溢出 */
+  .dest-md-body table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }

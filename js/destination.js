@@ -119,7 +119,7 @@
       showError();
       return;
     }
-    fetch('http://localhost:1337/api/destinations?filters[dest_value][$eq]=' + encodeURIComponent(slug) + '&pagination[limit]=1')
+    fetch('/api/destinations?filters[dest_value][$eq]=' + encodeURIComponent(slug) + '&pagination[limit]=1')
       .then(function (res) { return res.json(); })
       .then(function (json) {
         var items = json.data || [];

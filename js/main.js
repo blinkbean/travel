@@ -257,7 +257,7 @@
       var people = form.querySelector('#people').value.trim();
       var message = form.querySelector('#message').value.trim();
 
-      fetch('http://localhost:1337/api/inquiries', {
+      fetch('/api/inquiries', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -432,7 +432,7 @@
       renderTours(currentLang);
       return;
     }
-    fetch('http://localhost:1337/api/tours?sort=sort_order:asc&pagination[limit]=20')
+    fetch('/api/tours?sort=sort_order:asc&pagination[limit]=20')
       .then(function (res) { return res.json(); })
       .then(function (json) {
         _toursCache = (json.data || []).map(function (item) {
@@ -535,7 +535,7 @@
       renderDestinations(currentLang);
       return;
     }
-    fetch('http://localhost:1337/api/destinations?sort=sort_order:asc&pagination[limit]=20')
+    fetch('/api/destinations?sort=sort_order:asc&pagination[limit]=20')
       .then(function (res) { return res.json(); })
       .then(function (json) {
         _destsCache = json.data || [];
@@ -686,7 +686,7 @@
       renderReviews(currentLang);
       return;
     }
-    fetch('http://localhost:1337/api/reviews?sort=sort_order:asc&pagination[limit]=20')
+    fetch('/api/reviews?sort=sort_order:asc&pagination[limit]=20')
       .then(function (res) { return res.json(); })
       .then(function (json) {
         _reviewsCache = json.data || [];
@@ -818,7 +818,7 @@
       if (item.image && item.image.url) {
         imgUrl = /^https?:\/\//.test(item.image.url)
           ? item.image.url
-          : 'http://localhost:1337' + item.image.url;
+          : '/api' + item.image.url;
       } else if (typeof item.image === 'string') {
         imgUrl = item.image;
       }
@@ -846,7 +846,7 @@
   }
 
   function loadMoments() {
-    fetch('http://localhost:1337/api/moments?sort=sort_order:asc&pagination[limit]=20&populate=image')
+    fetch('/api/moments?sort=sort_order:asc&pagination[limit]=20&populate=image')
       .then(function (res) { return res.json(); })
       .then(function (json) {
         var data = json.data || [];
