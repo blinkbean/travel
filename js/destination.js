@@ -3,6 +3,7 @@
    ================================================ */
 
 (function () {
+  var BASE_URL = location.hostname === 'localhost' ? 'http://localhost:1337' : '';
   'use strict';
 
   /* ---- 读取 URL 参数 ---- */
@@ -119,7 +120,7 @@
       showError();
       return;
     }
-    fetch('/api/destinations?filters[dest_value][$eq]=' + encodeURIComponent(slug) + '&pagination[limit]=1')
+    fetch(BASE_URL + '/api/destinations?filters[dest_value][$eq]=' + encodeURIComponent(slug) + '&pagination[limit]=1')
       .then(function (res) { return res.json(); })
       .then(function (json) {
         var items = json.data || [];

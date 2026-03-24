@@ -3,6 +3,7 @@
    ================================================ */
 
 (function () {
+  var BASE_URL = location.hostname === 'localhost' ? 'http://localhost:1337' : '';
   'use strict';
 
   /* ---- Navbar scroll effect ---- */
@@ -257,7 +258,7 @@
       var people = form.querySelector('#people').value.trim();
       var message = form.querySelector('#message').value.trim();
 
-      fetch('/api/inquiries', {
+      fetch(BASE_URL + '/api/inquiries', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -432,7 +433,7 @@
       renderTours(currentLang);
       return;
     }
-    fetch('/api/tours?sort=sort_order:asc&pagination[limit]=20')
+    fetch(BASE_URL + '/api/tours?sort=sort_order:asc&pagination[limit]=20')
       .then(function (res) { return res.json(); })
       .then(function (json) {
         _toursCache = (json.data || []).map(function (item) {
@@ -535,23 +536,19 @@
       renderDestinations(currentLang);
       return;
     }
-    fetch('/api/destinations?sort=sort_order:asc&pagination[limit]=20')
+    fetch(BASE_URL + '/api/destinations?sort=sort_order:asc&pagination[limit]=20')
       .then(function (res) { return res.json(); })
       .then(function (json) {
         _destsCache = json.data || [];
         renderDestinations(currentLang);
       })
       .catch(function () {
-        // API 失败时回退到静态内容
         var grid = document.getElementById('destGrid');
         if (grid) grid.innerHTML = getFallbackDestsHtml();
         bindDestCards();
-        _updateDestCta(0);
+        _fixDestGridLastCard();
       });
   }
-
-  var _destsExpanded = false;
-  var DEST_INITIAL_COUNT = 5;
 
   function renderDestinations(lang) {
     var grid = document.getElementById('destGrid');
@@ -560,7 +557,7 @@
     if (_destsCache.length === 0) {
       grid.innerHTML = getFallbackDestsHtml();
       bindDestCards();
-      _updateDestCta(0);
+      _fixDestGridLastCard();
       return;
     }
 
@@ -575,9 +572,6 @@
 
       if (item.image) {
         var imageUrl = String(item.image).trim();
-        if (/^https?:\/\/unsplash\.com\/photos\//.test(imageUrl)) {
-          console.warn('[travel] 目的地图片请存 images.unsplash.com 直链：', imageUrl);
-        }
         if (/^https?:\/\//.test(imageUrl)) {
           imgStyle = ' style="background-image:url(\'' + imageUrl + '\')"';
         }
@@ -585,9 +579,8 @@
 
       var sizeClass = idx === 0 ? ' dest-large' : '';
       var bgClass = imgStyle ? '' : (' dest-' + destValue);
-      var hiddenClass = (!_destsExpanded && idx >= DEST_INITIAL_COUNT) ? ' dest-card-hidden' : '';
 
-      return '<div class="dest-card' + sizeClass + bgClass + hiddenClass + '" data-dest-value="' + destValue + '"' + imgStyle + '>' +
+      return '<div class="dest-card' + sizeClass + bgClass + '" data-dest-value="' + destValue + '"' + imgStyle + '>' +
         '<div class="dest-overlay">' +
           '<h3>' + name + '</h3>' +
           '<p>' + subtitle + '</p>' +
@@ -597,45 +590,13 @@
     }).join('');
 
     bindDestCards();
-    _updateDestCta(_destsCache.length);
+    _fixDestGridLastCard();
   }
 
-  function _updateDestCta(total) {
-    var cta = document.getElementById('destCta');
-    var btn = document.getElementById('destShowAll');
-    if (!cta || !btn) return;
-
-    if (total <= DEST_INITIAL_COUNT) {
-      cta.style.display = 'none';
-      return;
-    }
-
-    cta.style.display = '';
-    var t = (typeof TRANSLATIONS !== 'undefined') && TRANSLATIONS[currentLang];
-    if (_destsExpanded) {
-      btn.textContent = t ? t.destShowLess : '收起';
-    } else {
-      btn.textContent = t ? t.destShowAll : '查看所有目的地';
-    }
-  }
-
-  function _bindDestCta() {
-    var btn = document.getElementById('destShowAll');
-    if (!btn) return;
-    btn.addEventListener('click', function () {
-      _destsExpanded = !_destsExpanded;
-      var cards = document.querySelectorAll('#destGrid .dest-card');
-      cards.forEach(function (card, idx) {
-        if (idx >= DEST_INITIAL_COUNT) {
-          if (_destsExpanded) {
-            card.classList.remove('dest-card-hidden');
-          } else {
-            card.classList.add('dest-card-hidden');
-          }
-        }
-      });
-      if (_destsCache) _updateDestCta(_destsCache.length);
-    });
+  function _fixDestGridLastCard() {
+    var cards = Array.prototype.slice.call(document.querySelectorAll('#destGrid .dest-card:not(.dest-large)'));
+    document.querySelectorAll('#destGrid .dest-card').forEach(function(c){ c.classList.remove('dest-last-odd'); });
+    if (cards.length % 2 === 1) cards[cards.length - 1].classList.add('dest-last-odd');
   }
 
   function getFallbackDestsHtml() {
@@ -672,6 +633,11 @@
     });
   }
 
+  function _bindDestCta() {
+    var btn = document.getElementById('destShowAll');
+    if (btn) btn.addEventListener('click', function () { window.location.href = 'destination.html'; });
+  }
+
   _bindDestCta();
   loadDestinations();
 
@@ -686,7 +652,7 @@
       renderReviews(currentLang);
       return;
     }
-    fetch('/api/reviews?sort=sort_order:asc&pagination[limit]=20')
+    fetch(BASE_URL + '/api/reviews?sort=sort_order:asc&pagination[limit]=20')
       .then(function (res) { return res.json(); })
       .then(function (json) {
         _reviewsCache = json.data || [];
@@ -846,7 +812,7 @@
   }
 
   function loadMoments() {
-    fetch('/api/moments?sort=sort_order:asc&pagination[limit]=20&populate=image')
+    fetch(BASE_URL + '/api/moments?sort=sort_order:asc&pagination[limit]=20&populate=image')
       .then(function (res) { return res.json(); })
       .then(function (json) {
         var data = json.data || [];

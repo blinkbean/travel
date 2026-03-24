@@ -3,6 +3,7 @@
    ================================================ */
 
 (function () {
+  var BASE_URL = location.hostname === 'localhost' ? 'http://localhost:1337' : '';
   'use strict';
 
   var tourId = new URLSearchParams(window.location.search).get('id');
@@ -108,7 +109,7 @@
 
   function loadTourDetail() {
     if (!tourId) { showError(); return; }
-    fetch('/api/tours/' + encodeURIComponent(tourId))
+    fetch(BASE_URL + '/api/tours/' + encodeURIComponent(tourId))
       .then(function (res) { return res.json(); })
       .then(function (json) {
         if (!json.data) { showError(); return; }

@@ -16,6 +16,8 @@ Thumbs.db
 *.tmp
 
 README.md
+
 deploy-scp.sh
 deploy.sh
 nginx.conf
+upload.sh
