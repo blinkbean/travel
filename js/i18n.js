@@ -11,7 +11,7 @@ const TRANSLATIONS = {
 
     /* ---- navbar ---- */
     navTours: '热门线路',
-    navDest: '精选目的地',
+    navDest: '精选城市',
     navAbout: '关于我们',
     navReviews: '旅客评价',
     navContact: '定制行程',
@@ -77,7 +77,7 @@ const TRANSLATIONS = {
 
     /* ---- destinations ---- */
     destTag: 'DESTINATIONS',
-    destTitle: '精选目的地',
+    destTitle: '精选目的城市',
     destDesc: '每一座城市都是一本厚重的书，等待您翻开',
     destExplore: '探索 →',
     destShowAll: '查看所有目的地',

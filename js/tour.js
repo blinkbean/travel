@@ -128,6 +128,7 @@
     var desc     = d['description_' + lang] || d.description_zh || '';
     var duration = d['duration_' + lang] || d.duration_zh || '';
     var highlights = d['highlights_' + lang] || d.highlights_zh || [];
+    var detail = d['detail_' + lang] || d.detail_zh || '';
     var price = d.price ? '￥' + Number(d.price).toLocaleString() : '';
     var imageUrl = d.image || '';
 
@@ -156,7 +157,6 @@
     var priceLabel = lang === 'en' ? 'From' : lang === 'es' ? 'Desde' : '起价';
     var perLabel   = lang === 'en' ? '/person' : lang === 'es' ? '/persona' : '/人';
     var ctaLabel   = lang === 'en' ? 'Book This Tour' : lang === 'es' ? 'Reservar ahora' : '立即预订此线路';
-    var backLabel  = lang === 'en' ? 'Back to Tours' : lang === 'es' ? 'Volver' : '返回线路列表';
     var routeLabel = lang === 'en' ? 'Route' : lang === 'es' ? 'Ruta' : '路线';
     var hlLabel    = lang === 'en' ? 'Highlights' : lang === 'es' ? 'Destacados' : '行程亮点';
 
@@ -166,19 +166,16 @@
         '<div class="tour-detail-hero-bg ' + bgClass + '" ' + bgStyle + '></div>' +
         '<div class="tour-detail-hero-overlay"></div>' +
         '<div class="tour-detail-hero-content">' +
-          '<a href="index.html#tours" class="dest-back-btn">' +
-            '<svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M19 12H5M5 12l7-7M5 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
-            '<span>' + backLabel + '</span>' +
-          '</a>' +
-          '<div class="tour-detail-meta-row">' +
-            badgeHtml +
-            '<span class="tour-detail-duration-tag">' + duration + '</span>' +
-          '</div>' +
-          '<h1 class="tour-detail-title">' + title + '</h1>' +
-          '<p class="tour-detail-route-hero">' +
-            '<svg viewBox="0 0 20 20" width="16" height="16" fill="none"><circle cx="4" cy="10" r="2.5" stroke="currentColor" stroke-width="1.4"/><circle cx="16" cy="10" r="2.5" stroke="currentColor" stroke-width="1.4"/><line x1="6.5" y1="10" x2="13.5" y2="10" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2 1.5"/></svg>' +
-            route +
-          '</p>' +
+          // '<div class="tour-detail-meta-row">' +
+          //   badgeHtml +
+          //   '<span class="tour-detail-duration-tag">' + duration + '</span>' +
+          // '</div>' +
+          '<h1 class="tour-detail-title" style="display: flex; align-items: center;">' +
+            '<a href="javascript:void(0)" onclick="window.history.back()" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; background-color: rgba(255,255,255,0.2); margin-right: 16px; cursor: pointer;">' +
+              '<svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M19 12H5M5 12l7-7M5 12l7 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+            '</a>' +
+            title +
+          '</h1>' +
         '</div>' +
       '</section>' +
 
@@ -188,12 +185,11 @@
         /* Left: main content */
         '<div class="tour-detail-main">' +
           '<p class="tour-detail-desc">' + desc + '</p>' +
-          '<div class="tour-detail-highlights">' +
-            '<h3 class="tour-detail-section-title">' + hlLabel + '</h3>' +
-            '<ul class="tour-hl-list">' + hlHtml + '</ul>' +
-          '</div>' +
-          /* 内容区占位，供后续扩展 */
-          '<div id="tourMarkdownBody"></div>' +
+          // '<div class="tour-detail-highlights">' +
+          //   '<h3 class="tour-detail-section-title">' + hlLabel + '</h3>' +
+          //   '<ul class="tour-hl-list">' + hlHtml + '</ul>' +
+          // '</div>' +
+          (detail ? '<div class="tour-detail-markdown">' + (typeof marked !== 'undefined' ? marked.parse(detail) : detail) + '</div>' : '') +
         '</div>' +
 
         /* Right: sidebar */
@@ -214,7 +210,7 @@
                 '<span class="sidebar-info-val">' + duration + '</span>' +
               '</div>' +
             '</div>' +
-            '<a href="index.html#contact" class="btn btn-primary tour-sidebar-cta">' + ctaLabel + '</a>' +
+            // '<a href="index.html#contact" class="btn btn-primary tour-sidebar-cta">' + ctaLabel + '</a>' +
           '</div>' +
         '</aside>' +
 

@@ -496,13 +496,17 @@
       }).join('');
 
       return '<div class="tour-card' + (isFeatured ? ' featured' : '') + '">' +
-        '<div class="tour-img' + (imgClass ? ' ' + imgClass : '') + '"' + imgStyle + '>' +
-          badgeHtml +
-          '<div class="tour-days">' + duration + '</div>' +
-        '</div>' +
+        '<a href="tour.html?id=' + item.documentId + '" class="tour-img-wrap" aria-label="' + title + '">' +
+          '<div class="tour-img' + (imgClass ? ' ' + imgClass : '') + '"' + imgStyle + '>' +
+            badgeHtml +
+            '<div class="tour-days">' + duration + '</div>' +
+            '<div class="tour-img-overlay">' +
+              '<h3 class="tour-img-title">' + title + '</h3>' +
+              '<p class="tour-img-route">' + route + '</p>' +
+            '</div>' +
+          '</div>' +
+        '</a>' +
         '<div class="tour-info">' +
-          '<h3>' + title + '</h3>' +
-          '<p class="tour-route">' + route + '</p>' +
           '<p class="tour-desc">' + desc + '</p>' +
           '<ul class="tour-highlights">' + highlightsHtml + '</ul>' +
           '<div class="tour-footer">' +
@@ -627,7 +631,7 @@
       card.addEventListener('click', function () {
         var destValue = card.getAttribute('data-dest-value');
         if (destValue) {
-          window.location.href = 'destination.html?slug=' + encodeURIComponent(destValue);
+          window.location.href = 'city.html?slug=' + encodeURIComponent(destValue);
         }
       });
     });
@@ -697,6 +701,24 @@
     }
 
     initReviewsSlider();
+    _bindReviewModal();
+  }
+
+  function _bindReviewModal() {
+    var overlay = document.getElementById('reviewModalOverlay');
+    if (!overlay) return;
+    document.getElementById('reviewsTrack').addEventListener('click', function (e) {
+      var card = e.target.closest('.review-card');
+      if (!card) return;
+      document.getElementById('reviewModalStars').innerHTML = card.querySelector('.review-stars').innerHTML;
+      document.getElementById('reviewModalText').textContent = card.querySelector('.review-text').textContent;
+      var author = card.querySelector('.review-author');
+      document.getElementById('reviewModalAvatar').textContent = author.querySelector('.review-avatar').textContent;
+      document.getElementById('reviewModalName').textContent = author.querySelector('strong').textContent;
+      document.getElementById('reviewModalTour').textContent = author.querySelector('span').textContent;
+      overlay.classList.add('active');
+    });
+    overlay.addEventListener('click', function () { overlay.classList.remove('active'); });
   }
 
   function getFallbackReviewsHtml(lang) {

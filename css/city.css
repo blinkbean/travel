@@ -1,0 +1,270 @@
+/* ================================================
+   城市线路页 city.css
+   ================================================ */
+
+/* ---- City Hero ---- */
+.city-hero {
+  position: relative;
+  height: 420px;
+  background: var(--dark) center/cover no-repeat;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 56px;
+}
+.city-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,.25) 0%, rgba(0,0,0,.65) 100%);
+}
+.city-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+.city-hero-tag {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  color: var(--gold-light);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.city-hero-title {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.city-hero-sub {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,.82);
+}
+
+/* ---- Breadcrumb ---- */
+.city-breadcrumb {
+  background: var(--gray-light);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+  font-size: .85rem;
+  color: var(--gray);
+}
+.city-breadcrumb a { color: var(--gray); }
+.city-breadcrumb a:hover { color: var(--red); }
+.city-breadcrumb span { margin: 0 6px; }
+
+/* ---- Tours Section ---- */
+.city-tours { padding: 72px 0 56px; }
+
+/* ---- Filters ---- */
+.city-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+.city-filter-btn {
+  padding: 8px 22px;
+  border-radius: 50px;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  color: var(--gray);
+  font-size: .88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.city-filter-btn:hover,
+.city-filter-btn.active {
+  border-color: var(--red);
+  color: var(--red);
+  background: rgba(192,57,43,.06);
+}
+
+/* ---- Tour Cards Grid ---- */
+.city-tours-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* ---- Tour Card ---- */
+.city-tour-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+.city-tour-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+.city-tour-img {
+  height: 200px;
+  background: var(--gray-light) center/cover no-repeat;
+  position: relative;
+}
+.city-tour-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: var(--red);
+  color: var(--white);
+  font-size: .72rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 50px;
+  letter-spacing: .04em;
+}
+.city-tour-badge.badge-gold { background: var(--gold); }
+.city-tour-body {
+  padding: 22px 22px 18px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.city-tour-meta {
+  display: flex;
+  gap: 16px;
+  font-size: .8rem;
+  color: var(--gray);
+  margin-bottom: 10px;
+}
+.city-tour-meta span { display: flex; align-items: center; gap: 4px; }
+.city-tour-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.city-tour-route {
+  font-size: .82rem;
+  color: var(--red);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.city-tour-desc {
+  font-size: .88rem;
+  color: var(--gray);
+  line-height: 1.65;
+  flex: 1;
+  margin-bottom: 16px;
+}
+.city-tour-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+.city-tour-highlights span {
+  background: var(--gray-light);
+  color: var(--text);
+  font-size: .75rem;
+  padding: 3px 10px;
+  border-radius: 50px;
+}
+.city-tour-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+.city-tour-price {
+  font-family: var(--font-serif);
+}
+.city-tour-price .from { font-size: .75rem; color: var(--gray); }
+.city-tour-price .amount {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--red);
+}
+.city-tour-price .per { font-size: .75rem; color: var(--gray); }
+
+/* ---- Skeleton ---- */
+.city-tour-skeleton {
+  height: 420px;
+  border-radius: var(--radius);
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ---- Empty ---- */
+.city-empty {
+  text-align: center;
+  padding: 60px 0;
+  color: var(--gray);
+  font-size: 1rem;
+}
+.city-empty a { color: var(--red); }
+
+/* ---- CTA ---- */
+.city-cta {
+  background: var(--dark);
+  padding: 56px 0;
+}
+.city-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.city-cta h3 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.city-cta p { color: rgba(255,255,255,.65); font-size: .95rem; }
+
+/* ---- Footer ---- */
+.footer {
+  background: #111;
+  padding: 28px 0;
+}
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--white);
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+}
+.footer-copy { color: rgba(255,255,255,.4); font-size: .8rem; }
+
+/* ---- Navbar override for light bg ---- */
+.navbar.scrolled .logo { color: var(--dark); }
+.navbar.scrolled .nav-links a:not(.btn-nav) { color: var(--dark); }
+
+/* ---- Responsive ---- */
+@media (max-width: 1024px) {
+  .city-tours-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .city-hero { height: 300px; padding-bottom: 36px; }
+  .city-hero-title { font-size: 2rem; }
+  .city-tours-grid { grid-template-columns: 1fr; }
+  .city-cta-inner { flex-direction: column; text-align: center; }
+  .footer-inner { flex-direction: column; text-align: center; }
+}
