@@ -45,17 +45,28 @@
   color: rgba(255,255,255,.82);
 }
 
-/* ---- Breadcrumb ---- */
-.city-breadcrumb {
-  background: var(--gray-light);
-  border-bottom: 1px solid var(--border);
-  padding: 12px 0;
-  font-size: .85rem;
-  color: var(--gray);
+/* ---- Back button ---- */
+.city-hero-content .dest-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  color: rgba(255,255,255,.85);
+  font-size: .88rem;
+  text-decoration: none;
+  background: rgba(255,255,255,.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 100px;
+  padding: .45rem 1rem;
+  margin-bottom: 1.4rem;
+  transition: background .2s, color .2s;
 }
-.city-breadcrumb a { color: var(--gray); }
-.city-breadcrumb a:hover { color: var(--red); }
-.city-breadcrumb span { margin: 0 6px; }
+
+.city-hero-content .dest-back-btn:hover {
+  background: rgba(255,255,255,.28);
+  color: #fff;
+}
 
 /* ---- Tours Section ---- */
 .city-tours { padding: 72px 0 56px; }

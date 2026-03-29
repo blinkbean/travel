@@ -193,26 +193,16 @@
         '</div>' +
 
         /* Right: sidebar */
-        '<aside class="tour-detail-sidebar">' +
+        '<aside class="tour-detail-sidebar" id="tourSidebar">' +
           '<div class="tour-sidebar-card">' +
-            '<div class="tour-sidebar-price">' +
-              '<span class="sidebar-price-from">' + priceLabel + '</span>' +
-              '<span class="sidebar-price-num">' + price + '</span>' +
-              '<span class="sidebar-price-per">' + perLabel + '</span>' +
+            '<button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="关闭">✕</button>' +
+            '<div class="tour-sidebar-qr">' +
+              '<img src="images/app.png" alt="扫码联系客服" class="tour-sidebar-qr-img" />' +
+              '<p class="tour-sidebar-qr-tip">' + (lang === 'en' ? 'Scan to contact customer service' : lang === 'es' ? 'Escanear para contactar al servicio al cliente' : '扫码添加微信，直接联系客服') + '</p>' +
             '</div>' +
-            '<div class="tour-sidebar-info">' +
-              '<div class="sidebar-info-row">' +
-                '<span class="sidebar-info-label">' + routeLabel + '</span>' +
-                '<span class="sidebar-info-val">' + route + '</span>' +
-              '</div>' +
-              '<div class="sidebar-info-row">' +
-                '<span class="sidebar-info-label">' + (lang === 'en' ? 'Duration' : lang === 'es' ? 'Duración' : '天数') + '</span>' +
-                '<span class="sidebar-info-val">' + duration + '</span>' +
-              '</div>' +
-            '</div>' +
-            // '<a href="index.html#contact" class="btn btn-primary tour-sidebar-cta">' + ctaLabel + '</a>' +
           '</div>' +
         '</aside>' +
+        '<button class="sidebar-fab" id="sidebarFab" aria-label="联系客服">💬</button>' +
 
       '</div>' +
 
@@ -221,15 +211,53 @@
         '<div class="container dest-detail-cta-inner">' +
           '<h2 class="dest-detail-cta-title">' + (lang === 'en' ? 'Ready to explore China?' : lang === 'es' ? '¿Listo para explorar China?' : '准备好踏上旅途了吗？') + '</h2>' +
           '<p class="dest-detail-cta-desc">' + (lang === 'en' ? 'Tell us your travel dream and we\'ll create a tailor-made itinerary for you.' : lang === 'es' ? 'Cuéntanos tu sueño de viaje y crearemos un itinerario a medida.' : '告诉我们您的旅行梦想，我们将在 24 小时内为您量身定制专属行程') + '</p>' +
+          '</br>' +
           '<a href="index.html#contact" class="btn btn-primary">' + (lang === 'en' ? 'Customize My Trip' : lang === 'es' ? 'Personalizar mi viaje' : '立即定制行程') + '</a>' +
         '</div>' +
-      '</section>';
+      '</section>' +
+
+      /* Footer */
+      '<footer class="footer">' +
+        '<div class="container footer-inner">' +
+          '<div class="footer-brand">' +
+            '<span class="logo-icon">&#9772;</span>' +
+            '<span class="footer-logo-text" data-i18n="logoText">漫旅世界·中国</span>' +
+            '<p data-i18n-html="footerBrand">让每一次旅行<br>都成为生命中最美的故事</p>' +
+          '</div>' +
+          '<div class="footer-contact">' +
+            '<h4 data-i18n="footerContactTitle">联系方式</h4>' +
+            '<p>travel@mantravel.cn</p>' +
+            '<p>+86 138 0000 1234</p>' +
+            '<p data-i18n="footerAddr">北京市朝阳区建国路 88 号</p>' +
+            '<div class="footer-social">' +
+              '<a href="#" aria-label="微信">微信</a>' +
+              '<a href="#" aria-label="微博">微博</a>' +
+              '<a href="#" aria-label="抖音">抖音</a>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="footer-bottom">' +
+          '<p data-i18n="footerCopy">© 2025 漫旅世界·中国 ManTravel. 保留所有权利.</p>' +
+        '</div>' +
+      '</footer>';
 
     var container = document.getElementById('tourContent');
     container.innerHTML = html;
     container.style.display = 'block';
 
     document.getElementById('tourLoading').style.display = 'none';
+
+    /* ---- 手机端 sidebar 浮窗交互 ---- */
+    var sidebar = document.getElementById('tourSidebar');
+    var fab = document.getElementById('sidebarFab');
+    var closeBtn = document.getElementById('sidebarCloseBtn');
+    if (fab && sidebar && closeBtn) {
+      fab.addEventListener('click', function () { sidebar.classList.add('sidebar-open'); });
+      closeBtn.addEventListener('click', function () { sidebar.classList.remove('sidebar-open'); });
+      sidebar.addEventListener('click', function (e) {
+        if (e.target === sidebar) sidebar.classList.remove('sidebar-open');
+      });
+    }
   }
 
   function showError() {

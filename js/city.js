@@ -118,7 +118,7 @@
     document.getElementById('cityHero').style.backgroundImage = 'url(' + city.img + ')';
     document.getElementById('cityName').textContent = name;
     document.getElementById('citySub').textContent  = sub;
-    document.getElementById('breadcrumbCity').textContent = name;
+    var bc = document.getElementById('breadcrumbCity'); if (bc) bc.textContent = name;
     document.title = name + ' · 漫旅世界·中国';
 
     // Tours
@@ -168,13 +168,13 @@
       var badge = tour.badge ? '<span class="city-tour-badge">' + tour.badge + '</span>' : '';
       var highlights = tour.highlights.map(function (h) { return '<span>' + h + '</span>'; }).join('');
       return '<div class="city-tour-card">' +
-        '<div class="city-tour-img" style="background-image:url(' + (CITY_DATA[slug] ? CITY_DATA[slug].img : '') + ')">' + badge + '</div>' +
+        '<div class="city-tour-img" style="background-image:url(' + (tour.image || (CITY_DATA[slug] ? CITY_DATA[slug].img : '')) + ')">' + badge + '</div>' +
         '<div class="city-tour-body">' +
           '<div class="city-tour-meta"><span>🗓 ' + tour.days + ({ zh: '天', en: ' days', es: ' días' }[currentLang] || '天') + '</span></div>' +
           '<div class="city-tour-title">' + title + '</div>' +
-          '<div class="city-tour-route">' + route + '</div>' +
+          // '<div class="city-tour-route">' + route + '</div>' +
           '<div class="city-tour-desc">' + desc + '</div>' +
-          '<div class="city-tour-highlights">' + highlights + '</div>' +
+          // '<div class="city-tour-highlights">' + highlights + '</div>' +
           '<div class="city-tour-footer">' +
             '<div class="city-tour-price"><span class="from">' + priceLabel + '</span> <span class="amount">¥' + tour.price.toLocaleString() + '</span><span class="per">' + perLabel + '</span></div>' +
             '<a href="tour.html?id=' + tour.id + '" class="btn btn-sm">' + detailLabel + '</a>' +
@@ -195,11 +195,12 @@
               id: item.documentId || item.id,
               days: item.days || 7,
               badge: item.badge || '',
-              title: { zh: item.title_zh || item.title || '', en: item.title_en || item.title || '', es: item.title_es || item.title || '' },
+              title: { zh: item.title_zh || '', en: item.title_en || '', es: item.title_es || '' },
               route: { zh: item.route_zh || '', en: item.route_en || '', es: item.route_es || '' },
-              desc:  { zh: item.desc_zh  || '', en: item.desc_en  || '', es: item.desc_es  || '' },
-              highlights: item.highlights || [],
+              desc:  { zh: item.description_zh || '', en: item.description_en || '', es: item.description_es || '' },
+              highlights: item.highlights_zh || item.highlights || [],
               price: item.price || 0,
+              image: item.image || '',
               tag: item.tag || ''
             };
           });

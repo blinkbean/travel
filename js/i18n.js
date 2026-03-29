@@ -41,6 +41,7 @@ const TRANSLATIONS = {
     priceFrom: '起价',
     pricePer: '/人',
     btnDetail: '了解详情',
+    backToHome: '返回首页',
     toursCtaText: '没有找到心仪的线路？',
     toursCtaBtn: '联系我们，量身定制',
 
@@ -189,6 +190,7 @@ const TRANSLATIONS = {
     priceFrom: 'From',
     pricePer: '/p.p.',
     btnDetail: 'View Details',
+    backToHome: 'Back to Home',
     toursCtaText: 'Can\'t find the perfect tour?',
     toursCtaBtn: 'Contact Us for a Custom Trip',
 
@@ -331,6 +333,7 @@ const TRANSLATIONS = {
     priceFrom: 'Desde',
     pricePer: '/p.p.',
     btnDetail: 'Ver Detalles',
+    backToHome: 'Volver al Inicio',
     toursCtaText: '¿No encuentras el circuito ideal?',
     toursCtaBtn: 'Contáctanos para un Viaje a Medida',
 
