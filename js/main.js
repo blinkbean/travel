@@ -581,7 +581,8 @@
         }
       }
 
-      var sizeClass = idx === 0 ? ' dest-large' : '';
+      // var sizeClass = idx === 0 ? ' dest-large' : '';
+      var sizeClass = idx === 0 ? '' : '';
       var bgClass = imgStyle ? '' : (' dest-' + destValue);
 
       return '<div class="dest-card' + sizeClass + bgClass + '" data-dest-value="' + destValue + '"' + imgStyle + '>' +
