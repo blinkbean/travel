@@ -228,6 +228,113 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
+  /* ---- Notification widget ---- */
+  const notifWidget = document.getElementById('notifWidget');
+  const notifClose = document.getElementById('notifClose');
+  const notifFab = document.getElementById('notifFab');
+  const notifOverlay = document.getElementById('notifOverlay');
+  const latestNoticeTitle = document.getElementById('latestNoticeTitle');
+  const latestNoticeDesc = document.getElementById('latestNoticeDesc');
+  const latestNoticeLink = document.getElementById('latestNoticeLink');
+
+  function isMobile() { return window.innerWidth < 768; }
+
+  // 手机端自动显示遮罩
+  if (isMobile()) notifOverlay.classList.add('active');
+
+  function getFabCenter() {
+    var r = notifFab.getBoundingClientRect();
+    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+  }
+
+  function hideWidget() {
+    var wr = notifWidget.getBoundingClientRect();
+    var wx = wr.left + wr.width / 2, wy = wr.top + wr.height / 2;
+    var fab = getFabCenter();
+    var dx = fab.x - wx, dy = fab.y - wy;
+    notifWidget.style.transition = 'none';
+    notifWidget.style.transform = '';
+    notifWidget.getBoundingClientRect(); // force reflow
+    notifWidget.style.transition = '';
+    notifWidget.style.transform = 'translate(' + dx + 'px,' + dy + 'px) scale(0)';
+    notifWidget.classList.add('notif-hidden');
+    notifOverlay.classList.remove('active');
+    notifFab.classList.add('visible');
+  }
+
+  function showWidget() {
+    var fab = getFabCenter();
+    var wr = notifWidget.getBoundingClientRect();
+    var wx = wr.left + wr.width / 2, wy = wr.top + wr.height / 2;
+    var dx = fab.x - wx, dy = fab.y - wy;
+    notifWidget.style.transition = 'none';
+    notifWidget.style.transform = 'translate(' + dx + 'px,' + dy + 'px) scale(0)';
+    notifWidget.classList.remove('notif-hidden');
+    notifFab.classList.remove('visible');
+    notifWidget.getBoundingClientRect(); // force reflow
+    requestAnimationFrame(function() {
+      notifWidget.style.transition = '';
+      notifWidget.style.transform = '';
+      if (isMobile()) notifOverlay.classList.add('active');
+    });
+  }
+
+  notifClose.addEventListener('click', hideWidget);
+  notifFab.addEventListener('click', showWidget);
+  notifOverlay.addEventListener('click', hideWidget);
+
+  function normalizeNoticeEntity(item) {
+    if (!item) return null;
+    if (item.attributes) {
+      return Object.assign({ id: item.id, documentId: item.documentId || item.id }, item.attributes);
+    }
+    return item;
+  }
+
+  function stripHtmlTags(text) {
+    return String(text || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+  }
+
+  function setLatestNoticeView(notice) {
+    if (!notice) return;
+    var title = notice.title || '最新通知';
+    var desc = notice.subtitle || stripHtmlTags(notice.content || '') || '点击查看完整通知内容。';
+
+    if (latestNoticeTitle) latestNoticeTitle.textContent = title;
+    if (latestNoticeDesc) latestNoticeDesc.textContent = desc.length > 80 ? desc.slice(0, 80) + '...' : desc;
+    if (latestNoticeLink) latestNoticeLink.setAttribute('href', 'notices.html');
+  }
+
+  function loadLatestNotice() {
+    fetch(BASE_URL + '/api/notices/latest')
+      .then(function (res) {
+        if (!res.ok) throw new Error('latest request failed');
+        return res.json();
+      })
+      .then(function (json) {
+        var latest = normalizeNoticeEntity(json && json.data);
+        if (latest) {
+          setLatestNoticeView(latest);
+          return;
+        }
+
+        return fetch(BASE_URL + '/api/notices/list')
+          .then(function (res) {
+            if (!res.ok) throw new Error('list request failed');
+            return res.json();
+          })
+          .then(function (listJson) {
+            var first = normalizeNoticeEntity(listJson && listJson.data && listJson.data[0]);
+            if (first) setLatestNoticeView(first);
+          });
+      })
+      .catch(function () {
+        if (latestNoticeLink) latestNoticeLink.setAttribute('href', 'notices.html');
+      });
+  }
+
+  loadLatestNotice();
+
   /* ---- Contact form handling ---- */
   const form = document.getElementById('contactForm');
   if (form) {

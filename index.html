@@ -75,7 +75,7 @@
   </section>
 
   <!-- ===== 数据亮点 ===== -->
-  <section class="stats">
+  <!-- <section class="stats">
     <div class="container">
       <div class="stat-item">
         <span class="stat-num" data-target="3000">0</span><span class="stat-unit">+</span>
@@ -94,7 +94,7 @@
         <p data-i18n="statScore">好评率</p>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- ===== 精选目的地 ===== -->
   <section class="destinations" id="destinations">
@@ -365,6 +365,25 @@
 
   <!-- 回到顶部 -->
   <button class="back-to-top" id="backToTop" aria-label="回到顶部">↑</button>
+
+  <!-- 通知浮窗缩小按钮 -->
+  <button class="notif-fab" id="notifFab" aria-label="查看通知">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6V11c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+  </button>
+
+  <!-- 手机遮罩 -->
+  <div class="notif-overlay" id="notifOverlay"></div>
+
+  <!-- 通知浮窗 -->
+  <div class="notif-widget" id="notifWidget">
+    <button class="notif-close" id="notifClose" aria-label="缩小">－</button>
+    <div class="notif-header">📢 最新通知</div>
+    <div class="notif-body">
+      <p class="notif-title" id="latestNoticeTitle">2025暑期特惠线路开抢！</p>
+      <p class="notif-desc" id="latestNoticeDesc">西藏、张家界、桂林三大热门线路限时8折，名额有限，先到先得。</p>
+      <a href="notices.html" class="notif-link" id="latestNoticeLink">查看详情 →</a>
+    </div>
+  </div>
 
   <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>

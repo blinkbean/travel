@@ -1419,6 +1419,116 @@ ul { list-style: none; }
 }
 
 /* ======================================
+   NOTIFICATION WIDGET
+====================================== */
+@keyframes notif-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+@keyframes notif-breathe-mobile {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.04); }
+}
+/* 浮窗（桌面/平板：右侧固定浮窗） */
+.notif-widget {
+  position: fixed;
+  top: 340px; 
+  right: 32px;
+  width: 280px;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  overflow: hidden;
+  transition: transform 0.7s cubic-bezier(0.4,0,0.2,1), opacity 0.7s ease;
+  animation: notif-breathe 3s ease-in-out infinite;
+}
+.notif-widget.notif-hidden {
+  opacity: 0;
+  pointer-events: none;
+  animation: none;
+}
+.notif-header {
+  background: var(--red);
+  color: var(--white);
+  padding: 10px 16px;
+  font-weight: 600;
+  font-size: .95rem;
+}
+.notif-body { padding: 14px 16px; }
+.notif-title { font-weight: 600; margin-bottom: 6px; font-size: .95rem; }
+.notif-desc { font-size: .85rem; color: var(--gray); line-height: 1.5; margin-bottom: 10px; }
+.notif-link {
+  font-size: .85rem;
+  color: var(--red);
+  font-weight: 600;
+}
+.notif-link:hover { color: var(--red-dark); }
+.notif-close {
+  position: absolute;
+  top: 8px; right: 10px;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.1rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 4px;
+}
+/* 缩小后的 FAB 按钮 */
+.notif-fab {
+  position: fixed;
+  bottom: 88px; right: 32px;
+  width: 46px; height: 46px;
+  background: var(--red);
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transform: scale(0);
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: center center;
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.35s ease;
+}
+.notif-fab.visible { transform: scale(1); opacity: 1; pointer-events: auto; }
+.notif-fab.visible:hover { background: var(--red-dark); transform: scale(1.1); }
+/* 手机遮罩 */
+.notif-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 999;
+}
+.notif-overlay.active { display: block; }
+/* 手机端：居中弹窗 */
+@media (max-width: 767px) {
+  .notif-widget {
+    bottom: auto; right: auto;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center center;
+    width: 88vw;
+    max-width: 340px;
+    z-index: 1000;
+    animation-name: notif-breathe-mobile;
+  }
+  .notif-widget.notif-hidden {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .notif-fab { bottom: 88px; right: 32px; }
+}
+
+/* ======================================
    RESPONSIVE
 ====================================== */
 @media (max-width: 1024px) {

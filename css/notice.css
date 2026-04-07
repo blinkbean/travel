@@ -1,0 +1,271 @@
+/* ===== Notice Page ===== */
+
+/* Hero */
+.notice-hero {
+  position: relative;
+  height: 340px;
+  background: linear-gradient(135deg, var(--dark) 0%, var(--dark-2) 60%, #3a1a1a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.notice-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('../images/tibet.jpg') center/cover no-repeat;
+  opacity: .18;
+}
+.notice-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(26,26,26,.55), rgba(26,26,26,.75));
+}
+.notice-hero-content {
+  position: relative;
+  z-index: 1;
+  color: var(--white);
+}
+.notice-hero-content .section-tag {
+  color: var(--gold);
+  letter-spacing: .18em;
+  font-size: .78rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.notice-hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.notice-hero-desc {
+  font-size: .95rem;
+  color: rgba(255,255,255,.75);
+}
+
+/* Section */
+.notice-section {
+  padding: 72px 0 96px;
+  background: var(--gray-light);
+}
+
+/* List */
+.notice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Card */
+.notice-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--red);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.notice-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+.notice-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.notice-index {
+  font-family: var(--font-serif);
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--white);
+  background: var(--red);
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: .05em;
+}
+.notice-time {
+  font-size: .82rem;
+  color: var(--gray);
+}
+.notice-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 6px;
+}
+.notice-card .notice-subtitle {
+  font-size: 1.05rem;
+  color: var(--red);
+  margin-bottom: 8px;
+}
+.notice-card .notice-content {
+  font-size: .9rem;
+  color: var(--gray);
+  line-height: 1.7;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Skeleton */
+.notice-skeleton {
+  height: 120px;
+  border-left-color: var(--border);
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Banner 卡片（有背景图时） */
+.notice-card-banner {
+  border-left: none;
+  padding: 0;
+  min-height: auto;
+  color: var(--text);
+  overflow: hidden;
+  background: var(--white);
+}
+.notice-banner-image {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+}
+.notice-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.52);
+  border-radius: var(--radius);
+}
+.notice-card-banner { position: relative; }
+.notice-banner-body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 28px 32px;
+}
+.notice-banner-text { flex: 1; min-width: 0; }
+.notice-card-banner .notice-card-head { margin-bottom: 10px; }
+.notice-card-banner .notice-index { background: var(--red); }
+.notice-card-banner .notice-time { color: var(--gray); }
+.notice-card-banner .notice-title { 
+  color: var(--dark); 
+  font-size: 1.55rem;
+  font-family: var(--font-serif);
+  font-weight: 700;
+}
+.notice-card-banner .notice-subtitle { 
+  color: var(--red); 
+  font-size: 1.15rem;
+}
+/* content 在图片下方 */
+.notice-banner-content {
+  padding: 16px 32px 24px;
+  font-size: .92rem;
+  color: var(--text);
+  line-height: 1.8;
+  background: var(--white);
+}
+.notice-banner-content h2,
+.notice-banner-content h3,
+.notice-banner-content h4 { font-family: var(--font-serif); margin: 12px 0 6px; color: var(--dark); }
+.notice-banner-content ul  { padding-left: 1.2em; list-style: disc; }
+.notice-banner-content li  { margin-bottom: 4px; }
+.notice-banner-content p   { margin-bottom: 8px; }
+.notice-banner-content strong { color: var(--red); }
+
+/* 二维码（banner 右侧） */
+.notice-card-banner .notice-qr-wrap {
+  position: absolute;
+  top: 50%;
+  right: 32px;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(255,255,255,.95);
+  box-shadow: 0 8px 24px rgba(0,0,0,.45);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+.notice-card-banner .notice-qr-tip { color: var(--gray); font-size: .8rem; }
+
+/* 内容 markdown */
+.notice-content {
+  font-size: .92rem;
+  color: var(--text);
+  line-height: 1.8;
+  margin-top: 12px;
+}
+.notice-content h2,
+.notice-content h3,
+.notice-content h4 { font-family: var(--font-serif); margin: 12px 0 6px; color: var(--dark); }
+.notice-content ul  { padding-left: 1.2em; list-style: disc; }
+.notice-content li  { margin-bottom: 4px; }
+.notice-content p   { margin-bottom: 8px; }
+.notice-content strong { color: var(--red); }
+
+/* 群二维码 */
+.notice-qr-wrap {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 16px;
+  background: var(--gray-light);
+  border-radius: var(--radius);
+}
+
+@media (max-width: 600px) {
+  .notice-banner-body {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 18px;
+  }
+  .notice-card-banner .notice-qr-wrap {
+    position: static;
+    transform: none;
+    top: auto;
+    right: auto;
+    margin-top: 16px;
+    align-self: center;
+  }
+  .notice-banner-content { padding: 12px 18px 20px; }
+}
+.notice-qr {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.notice-qr-tip {
+  font-size: .8rem;
+  color: var(--gray);
+}
+
+/* Empty */
+.notice-empty {
+  text-align: center;
+  padding: 80px 0;
+  color: var(--gray);
+  font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+  .notice-card { padding: 20px 18px; }
+  .notice-hero  { height: 260px; }
+}

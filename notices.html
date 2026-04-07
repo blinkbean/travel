@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>通知公告 - 漫旅世界·中国</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/notice.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== 导航栏 ===== -->
+  <header class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">&#9772;</span>
+        <span class="logo-text">漫旅世界·中国</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html#tours">热门线路</a>
+        <a href="index.html#destinations">精选目的地</a>
+        <a href="index.html#about">关于我们</a>
+        <a href="index.html#reviews">旅客评价</a>
+        <a href="index.html#contact" class="btn-nav">定制行程</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== 页面 Hero ===== -->
+  <section class="notice-hero">
+    <div class="notice-hero-overlay"></div>
+    <div class="notice-hero-content">
+      <p class="section-tag">NOTICE</p>
+      <h1 class="notice-hero-title">通知公告</h1>
+      <p class="notice-hero-desc">最新活动资讯与重要通知，请及时查阅</p>
+    </div>
+  </section>
+
+  <!-- ===== 公告列表 ===== -->
+  <section class="notice-section">
+    <div class="container">
+      <div id="noticeList" class="notice-list" aria-live="polite">
+        <div class="notice-card notice-skeleton"></div>
+        <div class="notice-card notice-skeleton"></div>
+        <div class="notice-card notice-skeleton"></div>
+      </div>
+      <div id="noticeEmpty" class="notice-empty" style="display:none;">
+        <p>暂无公告内容</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 页脚 ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">&#9772;</span>
+        <span class="footer-logo-text">漫旅世界·中国</span>
+        <p>让每一次旅行<br>都成为生命中最美的故事</p>
+      </div>
+      <div class="footer-contact">
+        <h4>联系方式</h4>
+        <p>travel@mantravel.cn</p>
+        <p>+86 138 0000 1234</p>
+        <p>北京市朝阳区建国路 88 号</p>
+        <div class="footer-social">
+          <a href="#" aria-label="微信">微信</a>
+          <a href="#" aria-label="微博">微博</a>
+          <a href="#" aria-label="抖音">抖音</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 漫旅世界·中国 ManTravel. 保留所有权利.</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="回到顶部">↑</button>
+
+  <script src="js/notices.js"></script>
+  <script>
+    // 导航滚动效果
+    var navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', function () {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+    // 移动端菜单
+    document.getElementById('navToggle').addEventListener('click', function () {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+    // 回到顶部
+    var btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', function () {
+      btn.classList.toggle('visible', window.scrollY > 400);
+    });
+    btn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  </script>
+</body>
+</html>
