@@ -156,6 +156,16 @@ const TRANSLATIONS = {
     footerContactTitle: '联系方式',
     footerAddr: '北京市朝阳区建国路 88 号',
     footerCopy: '© 2025 漫旅世界·中国 ManTravel. 保留所有权利.',
+
+    /* ---- notices ---- */
+    noticesPageTitle: '通知公告 - 漫旅世界·中国',
+    noticesTitle: '通知公告',
+    noticesDesc: '最新活动资讯与重要通知，请及时查阅',
+    noticesEmpty: '暂无公告内容',
+    noticesQrTip: '扫码加入活动群',
+    noticesFallbackTitle: '通知',
+    notifHeader: '📢 最新通知',
+    notifLink: '查看详情 →',
   },
 
   en: {
@@ -299,6 +309,16 @@ const TRANSLATIONS = {
     footerContactTitle: 'Contact',
     footerAddr: '88 Jianguo Road, Chaoyang, Beijing',
     footerCopy: '© 2025 ManTravel. All rights reserved.',
+
+    /* ---- notices ---- */
+    noticesPageTitle: 'Notices - ManTravel',
+    noticesTitle: 'Notices',
+    noticesDesc: 'Latest updates and important announcements',
+    noticesEmpty: 'No notices available',
+    noticesQrTip: 'Scan to join the group',
+    noticesFallbackTitle: 'Notice',
+    notifHeader: '📢 Latest Notice',
+    notifLink: 'View Details →',
   },
 
   es: {
@@ -442,5 +462,15 @@ const TRANSLATIONS = {
     footerContactTitle: 'Contacto',
     footerAddr: 'Calle Jianguo 88, Chaoyang, Pekín',
     footerCopy: '© 2025 ManTravel. Todos los derechos reservados.',
+
+    /* ---- notices ---- */
+    noticesPageTitle: 'Avisos - ManTravel',
+    noticesTitle: 'Avisos',
+    noticesDesc: 'Últimas novedades y avisos importantes',
+    noticesEmpty: 'No hay avisos disponibles',
+    noticesQrTip: 'Escanea para unirte al grupo',
+    noticesFallbackTitle: 'Aviso',
+    notifHeader: '📢 Último Aviso',
+    notifLink: 'Ver Detalles →',
   }
 };

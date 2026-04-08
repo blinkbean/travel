@@ -50,7 +50,10 @@
     var card = document.createElement('article');
     card.className = 'notice-card';
 
-    var title = notice.title || ('通知 #' + (idx + 1));
+    var lang = localStorage.getItem('mantravel_lang') || 'zh';
+    var t = (typeof TRANSLATIONS !== 'undefined') && TRANSLATIONS[lang];
+    var fallback = (t && t.noticesFallbackTitle) || '通知';
+    var title = notice.title || (fallback + ' #' + (idx + 1));
     var subtitle = notice.subtitle || '';
     var time = formatTime(notice.time || notice.publishedAt || notice.createdAt);
     var contentHtml = renderMarkdown(notice.content || '');
@@ -60,7 +63,7 @@
     var qrHtml = qrImg ?
       '<div class="notice-qr-wrap">' +
         '<img class="notice-qr" src="' + qrImg + '" alt="群二维码" />' +
-        '<p class="notice-qr-tip">扫码加入活动群</p>' +
+        '<p class="notice-qr-tip">' + ((t && t.noticesQrTip) || '扫码加入活动群') + '</p>' +
       '</div>' : '';
 
     if (mainImg) {

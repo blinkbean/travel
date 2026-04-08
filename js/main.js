@@ -297,8 +297,9 @@
 
   function setLatestNoticeView(notice) {
     if (!notice) return;
-    var title = notice.title || '最新通知';
-    var desc = notice.subtitle || stripHtmlTags(notice.content || '') || '点击查看完整通知内容。';
+    var t = (typeof TRANSLATIONS !== 'undefined') && TRANSLATIONS[currentLang];
+    var title = notice.title || (t && t.notifHeader) || '最新通知';
+    var desc = notice.subtitle || stripHtmlTags(notice.content || '') || (t && t.notifLink) || '点击查看完整通知内容。';
 
     if (latestNoticeTitle) latestNoticeTitle.textContent = title;
     if (latestNoticeDesc) latestNoticeDesc.textContent = desc.length > 80 ? desc.slice(0, 80) + '...' : desc;
