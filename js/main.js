@@ -423,7 +423,7 @@
      ================================================ */
 
   var LANG_KEY = 'mantravel_lang';
-  var currentLang = localStorage.getItem(LANG_KEY) || 'zh';
+  var currentLang = localStorage.getItem(LANG_KEY) || 'es';
 
   function applyTranslations(lang) {
     var t = (typeof TRANSLATIONS !== 'undefined') && TRANSLATIONS[lang];

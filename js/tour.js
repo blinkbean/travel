@@ -43,7 +43,7 @@
 
   /* ---- i18n ---- */
   var LANG_KEY = 'mantravel_lang';
-  var currentLang = localStorage.getItem(LANG_KEY) || 'zh';
+  var currentLang = localStorage.getItem(LANG_KEY) || 'es';
   var LANG_LABELS = { zh: '中文', en: 'English', es: 'Español' };
 
   function applyTranslations(lang) {

@@ -50,7 +50,7 @@
     var card = document.createElement('article');
     card.className = 'notice-card';
 
-    var lang = localStorage.getItem('mantravel_lang') || 'zh';
+    var lang = localStorage.getItem('mantravel_lang') || 'es';
     var t = (typeof TRANSLATIONS !== 'undefined') && TRANSLATIONS[lang];
     var fallback = (t && t.noticesFallbackTitle) || '通知';
     var title = notice.title || (fallback + ' #' + (idx + 1));

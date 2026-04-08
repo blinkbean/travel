@@ -6,7 +6,7 @@
 
   var BASE_URL = location.hostname === 'localhost' ? 'http://localhost:1337' : '';
   var LANG_KEY = 'mantravel_lang';
-  var currentLang = localStorage.getItem(LANG_KEY) || 'zh';
+  var currentLang = localStorage.getItem(LANG_KEY) || 'es';
 
   /* ---- 城市静态数据（fallback） ---- */
   var CITY_DATA = {
