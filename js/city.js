@@ -10,13 +10,13 @@
 
   /* ---- 城市静态数据（fallback） ---- */
   var CITY_DATA = {
-    beijing:     { zh: '北京', en: 'Beijing',   es: 'Pekín',    sub: { zh: '故宫 · 长城 · 胡同', en: 'Palace · Great Wall · Hutong', es: 'Palacio · Gran Muralla · Hutong' }, img: 'images/beijing.jpg' },
-    shanghai:    { zh: '上海', en: 'Shanghai',  es: 'Shanghái', sub: { zh: '外滩 · 弄堂 · 摩登', en: 'Bund · Alleys · Skyline',       es: 'Bund · Callejones · Modernidad' }, img: 'images/shanghai.jpg' },
-    guilin:      { zh: '桂林', en: 'Guilin',    es: 'Guilin',   sub: { zh: '漓江 · 阳朔 · 山水', en: 'Li River · Karst · Nature',     es: 'Río Li · Karst · Naturaleza' },    img: 'images/guilin.jpg' },
-    chengdu:     { zh: '成都', en: 'Chengdu',   es: 'Chengdu',  sub: { zh: '熊猫 · 火锅 · 茶馆', en: 'Pandas · Hotpot · Teahouse',   es: 'Pandas · Hotpot · Casa de Té' },   img: 'images/chengdu.jpg' },
-    zhangjiajie: { zh: '张家界', en: 'Zhangjiajie', es: 'Zhangjiajie', sub: { zh: '悬浮山 · 玻璃桥 · 云雾', en: 'Avatar Mountains · Glass Bridge', es: 'Montañas Avatar · Puente de Cristal' }, img: 'images/zhangjiajie.jpg' },
-    lhasa:       { zh: '拉萨', en: 'Lhasa',     es: 'Lhasa',    sub: { zh: '布达拉宫 · 圣湖 · 天空', en: 'Potala · Holy Lake · Sky',   es: 'Potala · Lago Sagrado · Cielo' },  img: 'images/tibet.jpg' },
-    xian:        { zh: '西安', en: "Xi'an",     es: "Xi'an",    sub: { zh: '兵马俑 · 古城墙 · 回民街', en: 'Terracotta · City Wall · Muslim Quarter', es: 'Terracota · Muralla · Barrio Musulmán' }, img: 'images/xian.jpg' }
+    beijing:     { zh: '北京', en: 'Beijing',   es: 'Pekín',    sub: { zh: '故宫 · 长城 · 胡同', en: 'Palace · Great Wall · Hutong', es: 'Palacio · Gran Muralla · Hutong' }, img: 'images/beijing.webp' },
+    shanghai:    { zh: '上海', en: 'Shanghai',  es: 'Shanghái', sub: { zh: '外滩 · 弄堂 · 摩登', en: 'Bund · Alleys · Skyline',       es: 'Bund · Callejones · Modernidad' }, img: 'images/shanghai.webp' },
+    guilin:      { zh: '桂林', en: 'Guilin',    es: 'Guilin',   sub: { zh: '漓江 · 阳朔 · 山水', en: 'Li River · Karst · Nature',     es: 'Río Li · Karst · Naturaleza' },    img: 'images/guilin.webp' },
+    chengdu:     { zh: '成都', en: 'Chengdu',   es: 'Chengdu',  sub: { zh: '熊猫 · 火锅 · 茶馆', en: 'Pandas · Hotpot · Teahouse',   es: 'Pandas · Hotpot · Casa de Té' },   img: 'images/chengdu.webp' },
+    zhangjiajie: { zh: '张家界', en: 'Zhangjiajie', es: 'Zhangjiajie', sub: { zh: '悬浮山 · 玻璃桥 · 云雾', en: 'Avatar Mountains · Glass Bridge', es: 'Montañas Avatar · Puente de Cristal' }, img: 'images/zhangjiajie.webp' },
+    lhasa:       { zh: '拉萨', en: 'Lhasa',     es: 'Lhasa',    sub: { zh: '布达拉宫 · 圣湖 · 天空', en: 'Potala · Holy Lake · Sky',   es: 'Potala · Lago Sagrado · Cielo' },  img: 'images/tibet.webp' },
+    xian:        { zh: '西安', en: "Xi'an",     es: "Xi'an",    sub: { zh: '兵马俑 · 古城墙 · 回民街', en: 'Terracotta · City Wall · Muslim Quarter', es: 'Terracota · Muralla · Barrio Musulmán' }, img: 'images/xian.webp' }
   };
 
   /* ---- 线路静态数据（fallback，按城市分组） ---- */

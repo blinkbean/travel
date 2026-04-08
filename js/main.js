@@ -897,14 +897,14 @@
 
   // 静态兜底数据（与 index.html 硬编码一致）
   var FALLBACK_MOMENTS = [
-    { image: 'images/beijing.jpg',     name_zh: '北京',      name_en: 'Beijing',     name_es: 'Pekín',       taken_at: null },
-    { image: 'images/shanghai.jpg',    name_zh: '上海',      name_en: 'Shanghai',    name_es: 'Shanghái',    taken_at: null },
-    { image: 'images/guilin.jpg',      name_zh: '桂林',      name_en: 'Guilin',      name_es: 'Guilin',      taken_at: null },
-    { image: 'images/chengdu.jpg',     name_zh: '成都',      name_en: 'Chengdu',     name_es: 'Chengdu',     taken_at: null },
-    { image: 'images/zhangjiajie.jpg', name_zh: '张家界',    name_en: 'Zhangjiajie', name_es: 'Zhangjiajie', taken_at: null },
-    { image: 'images/tibet.jpg',       name_zh: '西藏拉萨',  name_en: 'Lhasa',       name_es: 'Lhasa',       taken_at: null },
-    { image: 'images/xian.jpg',        name_zh: '西安',      name_en: "Xi'an",       name_es: "Xi'an",       taken_at: null },
-    { image: 'images/silkroad.jpg',    name_zh: '敦煌丝路',  name_en: 'Dunhuang',    name_es: 'Dunhuang',    taken_at: null },
+    { image: 'images/beijing.webp',     name_zh: '北京',      name_en: 'Beijing',     name_es: 'Pekín',       taken_at: null },
+    { image: 'images/shanghai.webp',    name_zh: '上海',      name_en: 'Shanghai',    name_es: 'Shanghái',    taken_at: null },
+    { image: 'images/guilin.webp',      name_zh: '桂林',      name_en: 'Guilin',      name_es: 'Guilin',      taken_at: null },
+    { image: 'images/chengdu.webp',     name_zh: '成都',      name_en: 'Chengdu',     name_es: 'Chengdu',     taken_at: null },
+    { image: 'images/zhangjiajie.webp', name_zh: '张家界',    name_en: 'Zhangjiajie', name_es: 'Zhangjiajie', taken_at: null },
+    { image: 'images/tibet.webp',       name_zh: '西藏拉萨',  name_en: 'Lhasa',       name_es: 'Lhasa',       taken_at: null },
+    { image: 'images/xian.webp',        name_zh: '西安',      name_en: "Xi'an",       name_es: "Xi'an",       taken_at: null },
+    { image: 'images/silkroad.webp',    name_zh: '敦煌丝路',  name_en: 'Dunhuang',    name_es: 'Dunhuang',    taken_at: null },
   ];
 
   var PW_SIZE_CYCLE = ['pw-md','pw-lg','pw-sm','pw-md','pw-lg','pw-sm','pw-md','pw-lg','pw-sm','pw-md','pw-lg','pw-sm','pw-md','pw-lg','pw-sm','pw-md'];
