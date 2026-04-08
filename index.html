@@ -379,9 +379,17 @@
     <button class="notif-close" id="notifClose" aria-label="缩小">－</button>
     <div class="notif-header" data-i18n="notifHeader">📢 最新通知</div>
     <div class="notif-body">
-      <p class="notif-title" id="latestNoticeTitle">2025暑期特惠线路开抢！</p>
-      <p class="notif-desc" id="latestNoticeDesc">西藏、张家界、桂林三大热门线路限时8折，名额有限，先到先得。</p>
-      <a href="notices.html" class="notif-link" id="latestNoticeLink" data-i18n="notifLink">查看详情 →</a>
+      <!-- 加载状态 -->
+      <div class="notif-loading" id="notifLoading">
+        <div class="loading-spinner"></div>
+        <p data-i18n="notifLoading">加载中...</p>
+      </div>
+      <!-- 数据内容 -->
+      <div class="notif-content" id="notifContent" style="display: none;">
+        <p class="notif-title" id="latestNoticeTitle"></p>
+        <p class="notif-desc" id="latestNoticeDesc"></p>
+        <a href="notices.html" class="notif-link" id="latestNoticeLink" data-i18n="notifLink">查看详情 →</a>
+      </div>
     </div>
   </div>
 

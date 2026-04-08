@@ -165,6 +165,7 @@ const TRANSLATIONS = {
     noticesQrTip: '扫码加入活动群',
     noticesFallbackTitle: '通知',
     notifHeader: '📢 最新通知',
+    notifLoading: '加载中...',
     notifLink: '查看详情 →',
   },
 
@@ -318,6 +319,7 @@ const TRANSLATIONS = {
     noticesQrTip: 'Scan to join the group',
     noticesFallbackTitle: 'Notice',
     notifHeader: '📢 Latest Notice',
+    notifLoading: 'Loading...',
     notifLink: 'View Details →',
   },
 
@@ -471,6 +473,7 @@ const TRANSLATIONS = {
     noticesQrTip: 'Escanea para unirte al grupo',
     noticesFallbackTitle: 'Aviso',
     notifHeader: '📢 Último Aviso',
+    notifLoading: 'Cargando...',
     notifLink: 'Ver Detalles →',
   }
 };

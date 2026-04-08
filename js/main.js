@@ -233,6 +233,8 @@
   const notifClose = document.getElementById('notifClose');
   const notifFab = document.getElementById('notifFab');
   const notifOverlay = document.getElementById('notifOverlay');
+  const notifLoading = document.getElementById('notifLoading');
+  const notifContent = document.getElementById('notifContent');
   const latestNoticeTitle = document.getElementById('latestNoticeTitle');
   const latestNoticeDesc = document.getElementById('latestNoticeDesc');
   const latestNoticeLink = document.getElementById('latestNoticeLink');
@@ -304,6 +306,10 @@
     if (latestNoticeTitle) latestNoticeTitle.textContent = title;
     if (latestNoticeDesc) latestNoticeDesc.textContent = desc.length > 80 ? desc.slice(0, 80) + '...' : desc;
     if (latestNoticeLink) latestNoticeLink.setAttribute('href', 'notices.html');
+    
+    // 隐藏加载状态，显示数据内容
+    if (notifLoading) notifLoading.style.display = 'none';
+    if (notifContent) notifContent.style.display = 'block';
   }
 
   function loadLatestNotice() {
@@ -330,6 +336,11 @@
           });
       })
       .catch(function () {
+        // 加载失败时，隐藏加载动画，显示默认提示
+        if (notifLoading) notifLoading.style.display = 'none';
+        if (notifContent) notifContent.style.display = 'block';
+        if (latestNoticeTitle) latestNoticeTitle.textContent = '暂无通知';
+        if (latestNoticeDesc) latestNoticeDesc.textContent = '当前没有最新通知，请稍后再查看。';
         if (latestNoticeLink) latestNoticeLink.setAttribute('href', 'notices.html');
       });
   }
